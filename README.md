@@ -12,9 +12,9 @@ Test program for verifying that microservices can be called and respond with dat
    - Port: 3000
    - Endpoint: POST /generate
 
-3. **progress-service** - (Placeholder for future implementation)
-   - Port: 
-   - Endpoint
+3. **progress-service** - FastAPI service for tracking user reading progress
+   - Port: 5003
+   - Endpoint: GET /progress
 
 ## How to Run
 
@@ -43,7 +43,9 @@ npm start  # Runs on port 3000
 
 #### Progress Service
 ```bash
-PLACEHOLDER
+cd ../progress-service
+pip install -r requirements.txt
+python main.py   # Runs on port 5003
 ```
 
 ### Running the Tests
@@ -74,11 +76,16 @@ The test program demonstrates:
 - POST /generate - Generate image response
 
 ### Progress Service
-- Placeholder for future implementation 
+- GET /progress – Retrieve reading progress for a user/book pair
 
 ## Example Output
 
-```
+Status Code: 200
+Raw Response: {"userId":"u123","bookId":"b456","currentPage":87,"percentageComplete":42}
+Parsed JSON: {'userId': 'u123', 'bookId': 'b456', 'currentPage': 87, 'percentageComplete': 42}
+
+progress-service: ✓ PASSED
+
 ============================================================
   TESTING RATING-SERVICE
 ============================================================
